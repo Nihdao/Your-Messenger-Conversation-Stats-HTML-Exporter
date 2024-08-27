@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    <link rel="stylesheet" href="../src/static/style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>{data[title]} - Statistics</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12mt-3">
+                <div class="bg-white bd-callout bd-callout-blue">
+                    <h1>{data[title]}</h1> 
+                    <p id="total-msg">{data[totalmsg]:repeat:{{item}}} messages</p>
+                    <p>Statistics from {data[interval_dates][0]} to {data[interval_dates][1]}</p>
+                    </div>            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div id="sticky">
+                    <div class="bg-white bd-callout bd-callout-blue">
+                        <p><strong>{data[totalparticipants]:repeat:{{item}}} participants :</strong></p> 
+                        {data[participants]:repeat:<li>{{item}}}</li>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="bg-white bd-callout bd-callout-blue">
+
+                    <h2>General Statistics</h2> 
+                    <!-- count_msg_per_day -->
+                    <h5>Messages sent per day</h5>
+                    <div class="text-end">
+                        <a class="btn btn-link" data-bs-toggle="collapse" href="#l0" role="button" aria-expanded="false" aria-controls="l0">
+                            Details
+                        </a>   
+                    </div>
+                    <div id="l0" class="list0 collapse card card-header">{data[count_msg_per_day]:repeat:{{item}}}</div>
+                    <div id="count_msg_per_day"></div>
+                    <hr>
+
+                    <h5>Message per day of the week</h5>
+                    <div class="text-end">
+                        <a class="btn btn-link" data-bs-toggle="collapse" href="#l19" role="button" aria-expanded="false" aria-controls="l19">
+                            Details
+                        </a>   
+                    </div>
+                    <div id="l19" class="list19 collapse card card-header">{data[count_msg_per_day_of_week]:repeat:{{item}}}</div>
+                    <div id="count_msg_per_day_of_week"></div>
+                    <hr>
+
+                    <h5>Message per hour of the day</h5>
+                    <div class="text-end">
+                        <a class="btn btn-link" data-bs-toggle="collapse" href="#l21" role="button" aria-expanded="false" aria-controls="l21">
+                            Details
+                        </a>   
+                    </div>
+                    <div id="l21" class="list21 collapse card card-header">{data[count_msg_per_hour_of_day]:repeat:{{item}}}</div>
+                    <div id="count_msg_per_hour_of_day"></div>
+                    <hr>
+
+
+                    <!-- msg_number_participants  -->
+                    <h5>Messages sent by participants</h5>
+                    <div class="text-end">
+                        <a class="btn btn-link" data-bs-toggle="collapse" href="#l1" role="button" aria-expanded="false" aria-controls="l1">
+                            Details
+                        </a>
+                    </div>
+                    <div id="l1" class="list1 collapse card card-header">{data[msg_number_participants]:repeat:{{item}}}</div>
+                    <div id="msg_number_participants"></div>
+                    <hr>
+
+
+                    <!-- frequency_msg_per_user_per_year  -->
+                    <h5>Messages sent by users per year</h5>
+                    <div class="text-end">
+                        <a class="btn btn-link" data-bs-toggle="collapse" href="#l3" role="button" aria-expanded="false" aria-controls="l3">
+                            Details
+                        </a>
+                    </div>
+                    <div id="l3" class="list3 collapse card card-header">{data[frequency_msg_per_user_per_year]:repeat:{{item}}}</div>
+                    <div id="frequency_msg_per_user_per_year"></div>
+                    <hr>
+
+                    <!-- count_unsent_msg_per_user_per_month  -->
+                    <h5>Messages deleted by users per year</h5>
+                    <div class="text-end">
+                        <a class="btn btn-link" data-bs-toggle="collapse" href="#l18" role="button" aria-expanded="false" aria-controls="l18">
+                            Details
+                        </a>
+                    </div>
+                    <div id="l18" class="list18 collapse card card-header">{data[count_unsent_msg_per_user_per_month]:repeat:{{item}}}</div>
+                    <div id="count_unsent_msg_per_user_per_month"></div>
+                    </div>  
+
+
+                    <div class="bg-white bd-callout bd-callout-blue">
+                    <h2>Media Information</h2> 
+
+                    <!-- count_photos_per_user_per_month  -->
+                    <h5>Photos sent by month per user</h5>
+                    <div class="text-end">
+                    <a class="btn btn-link" data-bs-toggle="collapse" href="#l6" role="button" aria-expanded="false" aria-controls="l6">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l6" class="list6 collapse card card-header">{data[count_photos_per_user_per_month]:repeat:{{item}}}</div>
+                    <div id="count_photos_per_user_per_month"></div>
+                    <hr>
+
+                    
+                    <!-- count_videos_per_user_per_month  -->
+                    <h5>Video sent by month per user</h5>
+                    <div class="text-end">
+                    <a class="btn btn-link" data-bs-toggle="collapse" href="#l7" role="button" aria-expanded="false" aria-controls="l7">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l7" class="list7 collapse card card-header">{data[count_videos_per_user_per_month]:repeat:{{item}}}</div>
+                    <div id="count_videos_per_user_per_month"></div>
+                    <hr>
+
+
+                    <!-- count_gifs_per_user_per_month  -->
+                    <h5>Gifs sent by month per user</h5>
+                    <div class="text-end">   
+                    <a class="btn btn-link" data-bs-toggle="collapse" href="#l8" role="button" aria-expanded="false" aria-controls="l8">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l8" class="list8 collapse card card-header">{data[count_gifs_per_user_per_month]:repeat:{{item}}}</div>
+                    <div id="count_gifs_per_user_per_month"></div>
+                    <hr>
+                    
+                    <!-- count_audiofiles_per_user_per_month -->
+                    <h5>Audio files sent by month per user</h5>
+                    <div class="text-end">   
+                    <a class="btn btn-link" data-bs-toggle="collapse" href="#l16" role="button" aria-expanded="false" aria-controls="l16">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l16" class="list16 collapse card card-header">{data[count_audiofiles_per_user_per_month]:repeat:{{item}}}</div>
+                    <div id="count_audiofiles_per_user_per_month"></div>
+                    <hr>
+
+                    <!-- count_files_per_user_per_month  -->
+                    <h5>Files sent by month per user</h5>
+                    <div class="text-end">   
+                    <a class="btn btn-link" data-bs-toggle="collapse" href="#l14" role="button" aria-expanded="false" aria-controls="l14">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l14" class="list14 collapse card card-header">{data[count_files_per_user_per_month]:repeat:{{item}}}</div>
+                    <div id="count_files_per_user_per_month"></div>
+                    <hr>
+
+
+                    <!-- count_share_per_user_per_month  -->
+                    <h5>Links sent by month per user</h5>
+                    <div class="text-end">   
+                    <a class="btn btn-link" data-bs-toggle="collapse" href="#l15" role="button" aria-expanded="false" aria-controls="l15">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l15" class="list15 collapse card card-header">{data[count_share_per_user_per_month]:repeat:{{item}}}</div>
+                    <div id="count_share_per_user_per_month"></div>
+                    <hr>
+
+                    <!-- count_link_shared_per_user  -->
+                    <h5>Favorite sites by user</h5>
+                    <div id="l17" class="list17">{data[count_link_shared_per_user]:repeat:{{item}}}</div>
+                    </div>
+
+
+
+                    <div class="bg-white bd-callout bd-callout-blue">
+                    <h2>Reactions</h2> 
+
+                    <!-- count_reactions -->
+                    <h5>Top 10 reactions of the conversation</h5>
+                    <div class="text-end">   
+                    <a class="btn btn-link" data-bs-toggle="collapse" href="#l4" role="button" aria-expanded="false" aria-controls="l4">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l4" class="list4 collapse card card-header">{data[count_reactions]:repeat:{{item}}}</div>
+                    <div id="count_reactions"></div>
+                    <hr>
+
+                
+
+                    
+                     <!-- count_react_per_user -->
+                     <h5>Number of reactions sent per users</h5>
+                     <div class="text-end">   
+                     <a class="btn btn-link" data-bs-toggle="collapse" href="#l9" role="button" aria-expanded="false" aria-controls="l9">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l9" class="list9 collapse card card-header">{data[count_react_per_user]:repeat:{{item}}}</div>
+                    <div id="count_react_per_user"></div>
+                    <hr>
+
+                    <!-- count_react_per_user_per_reaction -->
+                    <h5>Top 5 reactions per user</h5>
+                    <div id="l10" class="list10 collapse card card-header">{data[count_react_per_user_per_reaction]:repeat:{{item}}}</div>
+                    <div id="count_react_per_user_per_reaction"></div>
+                    <hr>
+
+                    <!-- most_reacted_msg -->
+                    <h5>The message with the most reactions</h5>
+                    <span class="list20 white-space-pre">{data[most_reacted_msg]:repeat:{{item}}}</span>
+                    </div>
+
+
+
+                    <div class="bg-white bd-callout bd-callout-blue">
+                    <h2>Message profile</h2> 
+                    
+                    <!-- max_content -->
+                    <h5>The longest message</h5>
+                    <span class="list2 white-space-pre">{data[max_content]:repeat:{{item}}}</span>
+
+                    <h5>Swear words by participants</h5>
+                    <div class="text-end">   
+                    <a class="btn btn-link" data-bs-toggle="collapse" href="#l5" role="button" aria-expanded="false" aria-controls="l5">
+                        Details
+                    </a>
+                    </div>
+                    <div id="l5" class="list5 collapse card card-header">{data[badwords_list]:repeat:{{item}}}</div>
+                    <div id="badwords_list"></div>
+                    <hr>
+
+                    <h5>Top 5 insults per user</h5>
+                    <div id="badwords_list2"></div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <p class="text-white">Boo!</p>
+    </div>
+
+
+
+
+    <!-- SCRIPTS  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> 
+    <script src="../src/static/script.js"></script>
+
+
+</body>
+</html>
